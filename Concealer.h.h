@@ -57,6 +57,6 @@ struct dummy_array_type<8> {
 // This is used to declare a concealer struct, an info function, and a dummy array in classes.
 #define OHMS_DECLARE_MEMBERS(_size_in_bytes, _align_as) \
 struct dummy_members; \
-static size_t dummy_size_when_compile();\
+static size_t dummy_size_when_compile(); \
 dummy_array_type<_align_as> _dummy_array \
 [(_size_in_bytes + sizeof(dummy_array_type<_align_as>) - 1) / sizeof(dummy_array_type<_align_as>)]

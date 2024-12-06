@@ -38,19 +38,19 @@
 #define DUMMYARRAY_SIZE(_size_in_bytes, _align_as) \
 (((_size_in_bytes + sizeof(dummy_array_type<_align_as>) - 1) / sizeof(dummy_array_type<_align_as>)) * sizeof(dummy_array_type<_align_as>))
 #define ___OHMS_CHECK_MEMBER_SIZE \
-static_assert(sizeof(_dummy_array) == DUMMYARRAY_SIZE(sizeof(dummy_members), alignof(dummy_members)), "HeaderCutter: Array size is not fit!")
+static_assert(sizeof(_dummy_array) == DUMMYARRAY_SIZE(sizeof(dummy_members), alignof(dummy_members)), "HeaderConcealer: Array size is not fit!")
 #define ___OHMS_CHECK_MEMBER_SIZE_NAME(_class) \
-static_assert(sizeof(_class::_dummy_array) == DUMMYARRAY_SIZE(sizeof(_class::dummy_members), alignof(_class::dummy_members)), "HeaderCutter: Array size is not fit in [" #_class "]!")
+static_assert(sizeof(_class::_dummy_array) == DUMMYARRAY_SIZE(sizeof(_class::dummy_members), alignof(_class::dummy_members)), "HeaderConcealer: Array size is not fit in [" #_class "]!")
 #else
 #define ___OHMS_CHECK_MEMBER_SIZE \
-static_assert(sizeof(_dummy_array) >= sizeof(dummy_members), "HeaderCutter: Array size is not enough!")
+static_assert(sizeof(_dummy_array) >= sizeof(dummy_members), "HeaderConcealer: Array size is not enough!")
 #define ___OHMS_CHECK_MEMBER_SIZE_NAME(_class) \
-static_assert(sizeof(_class::_dummy_array) >= sizeof(_class::dummy_members), "HeaderCutter: Array size is not enough in [" #_class "]!")
+static_assert(sizeof(_class::_dummy_array) >= sizeof(_class::dummy_members), "HeaderConcealer: Array size is not enough in [" #_class "]!")
 #endif
 #define ___OHMS_CHECK_MEMBER_ALIGN \
-static_assert(alignof(decltype(_dummy_array)) == alignof(dummy_members), "HeaderCutter: Array align is wrong!")
+static_assert(alignof(decltype(_dummy_array)) == alignof(dummy_members), "HeaderConcealer: Array align is wrong!")
 #define ___OHMS_CHECK_MEMBER_ALIGN_NAME(_class) \
-static_assert(alignof(decltype(_class::_dummy_array)) == alignof(_class::dummy_members), "HeaderCutter: Array align is wrong in [" #_class "]!")
+static_assert(alignof(decltype(_class::_dummy_array)) == alignof(_class::dummy_members), "HeaderConcealer: Array align is wrong in [" #_class "]!")
 
 // Use this to access members of current class.
 #define THIS                  ((dummy_members*)(_dummy_array))
